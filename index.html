@@ -202,11 +202,28 @@
                 duracion: 2
             };
 
-            const newNotification = {
-                name: "MARÍA NUÑEZ","JUAN CORTEZ","FEDERICO ANDRADA","CLAUDIA PEREZ","JUANA MANSO","JOSE CALAMAR","JOACO ALCADA","PEPE ANTUNES","BART SIMPSON","MARIA ESCOBAR","PABLITO","D10S","PAPARELA","SEÑOR DE LA NOCHE",
-                message: "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES", "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN", "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
+            const names = [
+    "MARÍA NUÑEZ", "JUAN CORTEZ", "FEDERICO ANDRADA", "CLAUDIA PEREZ", "JUANA MANSO",
+    "JOSE CALAMAR", "JOACO ALCADA", "PEPE ANTUNES", "BART SIMPSON", "MARIA ESCOBAR",
+    "PABLITO", "D10S", "PAPARELA", "SEÑOR DE LA NOCHE"
+];
 
-            };
+const messages = [
+    "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES",
+    "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN",
+    "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
+];
+
+// Función para generar una notificación aleatoria
+function getRandomNotification() {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const message = messages[Math.floor(Math.random() * messages.length)];
+    return { name, message };
+}
+
+// Ejemplo de uso:
+const newNotification = getRandomNotification();
+console.log(newNotification); // { name: "JOSE CALAMAR", message: "NUNCA FALLAN" }
 
             function showNotification() {
                 const noti = document.createElement("div");
