@@ -193,37 +193,59 @@
         MEGA BONUS todos los derechos reservados.
     </footer>
 
-    <!-- Script para notificaciones emergentes -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const config = {
-                productImage: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-                intervalo: 2,
-                duracion: 2
-            };
+    document.addEventListener("DOMContentLoaded", function () {
+        const config = {
+            productImage: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+            intervalo: 4, // segundos entre notificaciones
+            duracion: 3   // segundos visibles
+        };
 
-            const names = [
-    "MARÍA NUÑEZ", "JUAN CORTEZ", "FEDERICO ANDRADA", "CLAUDIA PEREZ", "JUANA MANSO",
-    "JOSE CALAMAR", "JOACO ALCADA", "PEPE ANTUNES", "BART SIMPSON", "MARIA ESCOBAR",
-    "PABLITO", "D10S", "PAPARELA", "SEÑOR DE LA NOCHE"
-];
+        const names = [
+            "MARÍA NUÑEZ", "JUAN CORTEZ", "FEDERICO ANDRADA", "CLAUDIA PEREZ", "JUANA MANSO",
+            "JOSE CALAMAR", "JOACO ALCADA", "PEPE ANTUNES", "BART SIMPSON", "MARIA ESCOBAR",
+            "PABLITO", "D10S", "PAPARELA", "SEÑOR DE LA NOCHE"
+        ];
 
-const messages = [
-    "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES",
-    "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN",
-    "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
-];
+        const messages = [
+            "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES",
+            "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN",
+            "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
+        ];
 
-// Función para generar una notificación aleatoria
-function getRandomNotification() {
-    const name = names[Math.floor(Math.random() * names.length)];
-    const message = messages[Math.floor(Math.random() * messages.length)];
-    return { name, message };
-}
+        function getRandomNotification() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            return { name, message };
+        }
 
-// Ejemplo de uso:
-const newNotification = getRandomNotification();
-console.log(newNotification); // { name: "JOSE CALAMAR", message: "NUNCA FALLAN" }
+        function showNotification() {
+            const newNotification = getRandomNotification();
+
+            const noti = document.createElement("div");
+            noti.className = "xpo-notification-wrap";
+            noti.innerHTML = `
+                <div class="xpo-img-wrap">
+                    <img src="${config.productImage}" alt="Premio">
+                </div>
+                <div class="xpo-col">
+                    <div class="xpo-notification-name">${newNotification.name}</div>
+                    <div class="xpo-notification-product">${newNotification.message}</div>
+                </div>
+            `;
+            document.body.appendChild(noti);
+            setTimeout(() => noti.classList.add("show"), 100);
+            setTimeout(() => {
+                noti.classList.remove("show");
+                setTimeout(() => noti.remove(), 500);
+            }, config.duracion * 1000);
+        }
+
+        // Mostrar la primera notificación y luego en intervalos
+        showNotification();
+        setInterval(showNotification, config.intervalo * 1000);
+    });
+</script>
 
             function showNotification() {
                 const noti = document.createElement("div");
