@@ -2,21 +2,20 @@
 <html lang="es">
 
 <head>
-    <!-- Metadatos básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GANA365 - BONUS DE BIENVENIDA</title>
-
-    <!-- Meta Tag actualizada para web-app -->
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- Meta Pixel Code de Damian -->
+    <!-- Meta Pixel -->
     <script>
         !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
+            if (f.fbq) return;
+            n = f.fbq = function () {
                 n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
             t.src = v; s = b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t, s)
@@ -28,9 +27,7 @@
         <img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=635168062745954&ev=PageView&noscript=1" />
     </noscript>
-    <!-- Fin Meta Pixel -->
 
-    <!-- Estilos principales -->
     <style>
         * {
             box-sizing: border-box;
@@ -107,7 +104,6 @@
             padding-bottom: 80px;
         }
 
-        /* Barra de promoción fija */
         .bono-bar {
             position: fixed;
             bottom: 0;
@@ -120,7 +116,6 @@
             font-weight: bold;
         }
 
-        /* Notificaciones emergentes */
         .xpo-notification-wrap {
             position: fixed;
             background: #1e1e1e;
@@ -172,7 +167,6 @@
 
 <body>
 
-    <!-- Contenido principal -->
     <div class="container">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo"
             class="whatsapp-logo">
@@ -185,69 +179,42 @@
             onclick="fbq('track', 'Contact');">CHATEAR EN WHATSAPP</a>
     </div>
 
-    <!-- Barra de promoción fija -->
     <div class="bono-bar">🎁 ¡Solicítalo ahora por WhatsApp!</div>
 
-    <!-- Pie de página -->
     <footer>
         MEGA BONUS todos los derechos reservados.
     </footer>
 
+    <!-- Notificaciones flotantes -->
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const config = {
-            productImage: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-            intervalo: 4, // segundos entre notificaciones
-            duracion: 3   // segundos visibles
-        };
+        document.addEventListener("DOMContentLoaded", function () {
+            const config = {
+                productImage: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+                intervalo: 4,
+                duracion: 3
+            };
 
-        const names = [
-            "MARÍA NUÑEZ", "JUAN CORTEZ", "FEDERICO ANDRADA", "CLAUDIA PEREZ", "JUANA MANSO",
-            "JOSE CALAMAR", "JOACO ALCADA", "PEPE ANTUNES", "BART SIMPSON", "MARIA ESCOBAR",
-            "PABLITO", "D10S", "PAPARELA", "SEÑOR DE LA NOCHE"
-        ];
+            const names = [
+                "MARÍA NUÑEZ", "JUAN CORTEZ", "FEDERICO ANDRADA", "CLAUDIA PEREZ", "JUANA MANSO",
+                "JOSE CALAMAR", "JOACO ALCADA", "PEPE ANTUNES", "BART SIMPSON", "MARIA ESCOBAR",
+                "PABLITO", "D10S", "PAPARELA", "SEÑOR DE LA NOCHE"
+            ];
 
-        const messages = [
-            "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES",
-            "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN",
-            "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
-        ];
+            const messages = [
+                "INCREÍBLES COMO SIEMPRE", "LOS MEJORES DE TODOS", "UNOS CRACKS EN SERIO", "SIEMPRE GENIALES",
+                "LA ROMPEN COMO SIEMPRE", "EXCELENTES COMO SIEMPRE", "LOS MÁS CAPOS", "UNA MARAVILLA DE ATENCIÓN",
+                "ESPECTACULARES SIEMPRE", "NUNCA FALLAN"
+            ];
 
-        function getRandomNotification() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const message = messages[Math.floor(Math.random() * messages.length)];
-            return { name, message };
-        }
-
-        function showNotification() {
-            const newNotification = getRandomNotification();
-
-            const noti = document.createElement("div");
-            noti.className = "xpo-notification-wrap";
-            noti.innerHTML = `
-                <div class="xpo-img-wrap">
-                    <img src="${config.productImage}" alt="Premio">
-                </div>
-                <div class="xpo-col">
-                    <div class="xpo-notification-name">${newNotification.name}</div>
-                    <div class="xpo-notification-product">${newNotification.message}</div>
-                </div>
-            `;
-            document.body.appendChild(noti);
-            setTimeout(() => noti.classList.add("show"), 100);
-            setTimeout(() => {
-                noti.classList.remove("show");
-                setTimeout(() => noti.remove(), 500);
-            }, config.duracion * 1000);
-        }
-
-        // Mostrar la primera notificación y luego en intervalos
-        showNotification();
-        setInterval(showNotification, config.intervalo * 1000);
-    });
-</script>
+            function getRandomNotification() {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                return { name, message };
+            }
 
             function showNotification() {
+                const newNotification = getRandomNotification();
+
                 const noti = document.createElement("div");
                 noti.className = "xpo-notification-wrap";
                 noti.innerHTML = `
